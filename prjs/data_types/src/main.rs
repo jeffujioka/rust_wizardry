@@ -8,9 +8,22 @@ fn loop_loop()
     let mut i = 0;
     loop // == while true
     {
-        println!("i = {}", i);
+        println!("loop -> i = {}", i);
         i += 1;
         if i > 3 { break; }
+    }
+}
+
+fn loop_for()
+{
+    for i in 0..3 // 0 -> 2
+    {
+        println!("for -> i = {}", i);
+    }
+
+    for (i, val) in (30..35).enumerate() // 30 -> 34
+    {
+        println!("for -> i:val = {}:{}", i, val);
     }
 }
 
@@ -76,4 +89,5 @@ fn main() {
     println!("Today is {}", day);
 
     loop_loop();
+    loop_for();
 }

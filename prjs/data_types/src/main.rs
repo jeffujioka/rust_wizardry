@@ -1,3 +1,7 @@
+#![allow(dead_code)]
+#![allow(unused_variables)]
+#![allow(unreachable_patterns)]
+
 use std::mem;
 
 const MY_GLOBAL_CONST_VAR:u32 = 0xdeadbeef;
@@ -38,6 +42,28 @@ fn ex_match(country_code:u64)
         _ => "Invalid"
     };
     println!("Country with code {} is {}", country_code, country);
+}
+
+enum Color
+{
+    Red,
+    Green,
+    Blue,
+    RgbColor(u8, u8, u8), // tuple
+    CmyColor{cyan:u8, magenta:u8, yellow:u8, black:u8}, // struct
+}
+
+fn enums(c:Color)
+{
+    match c {
+        Color::Red => println!("Red"),
+        Color::Green => println!("Green"),
+        Color::Blue => println!("Blue"),
+        Color::RgbColor(0, 0, 0) => println!("Black"),
+        Color::CmyColor{cyan:_,magenta:_,yellow:_,black:255} => println!("Black 2"),
+        Color::RgbColor(r, g, b) => println!("rgb({}, {}, {})", r, g, b),
+        _ => println!("Not implemented!")
+    }
 }
 
 fn main() {
@@ -107,4 +133,11 @@ fn main() {
     ex_match(55);
     ex_match(1000);
     ex_match(11000);
+    enums(Color::Red);
+    enums(Color::Green);
+    enums(Color::Blue);
+    enums(Color::RgbColor(0, 0, 0));
+    enums(Color::RgbColor(0, 0, 255));
+    enums(Color::CmyColor{cyan:0, magenta:0, yellow:0, black:255});
+    enums(Color::CmyColor{cyan:1, magenta:1, yellow:15, black:2});
 }

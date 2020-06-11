@@ -3,6 +3,17 @@ use std::mem;
 const MY_GLOBAL_CONST_VAR:u32 = 0xdeadbeef;
 static mut MY_GLOBAL_STATIC_VAR:u32 = MY_GLOBAL_CONST_VAR;
 
+fn loop_loop()
+{
+    let mut i = 0;
+    loop // == while true
+    {
+        println!("i = {}", i);
+        i += 1;
+        if i > 3 { break; }
+    }
+}
+
 fn main() {
     println!("Hello, data types!");
 
@@ -59,4 +70,10 @@ fn main() {
     {
         println!("MY_GLOBAL_STATIC_VAR = {}", MY_GLOBAL_STATIC_VAR);
     }
+
+    let temp = 20;
+    let day = if  temp > 20 {"sunny"} else {"cloudy"};
+    println!("Today is {}", day);
+
+    loop_loop();
 }

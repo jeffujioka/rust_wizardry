@@ -1,5 +1,8 @@
 use std::mem;
 
+const MY_GLOBAL_CONST_VAR:u32 = 0xdeadbeef;
+static mut MY_GLOBAL_STATIC_VAR:u32 = MY_GLOBAL_CONST_VAR;
+
 fn main() {
     println!("Hello, data types!");
 
@@ -50,4 +53,10 @@ fn main() {
 
     println!("2.0^4 = {}", f64::powi(2.0, 4));
     println!("2.0^PI = {}", f64::powf(2.0, std::f64::consts::PI));
+
+    println!("MY_GLOBAL_CONST_VAR = {}", MY_GLOBAL_CONST_VAR);
+    unsafe
+    {
+        println!("MY_GLOBAL_STATIC_VAR = {}", MY_GLOBAL_STATIC_VAR);
+    }
 }

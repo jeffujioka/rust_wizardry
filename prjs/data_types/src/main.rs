@@ -41,10 +41,13 @@ fn main() {
 
     let c = 'a';
     println!("let c = {} has {} bytes", c, mem::size_of_val(&c));
-
+    
     let b: bool = false;
     println!("let b = {} has {} bytes", b, mem::size_of_val(&b));
-
+    
     let b2 = 4 > 0;
     println!("let b2 = {} has {} bytes", b2, mem::size_of_val(&b2));
+
+    println!("2.0^4 = {}", f64::powi(2.0, 4));
+    println!("2.0^PI = {}", f64::powf(2.0, std::f64::consts::PI));
 }

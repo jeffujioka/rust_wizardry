@@ -3,7 +3,7 @@ use std::mem;
 const MY_GLOBAL_CONST_VAR:u32 = 0xdeadbeef;
 static mut MY_GLOBAL_STATIC_VAR:u32 = MY_GLOBAL_CONST_VAR;
 
-fn loop_loop()
+fn ex_loop()
 {
     let mut i = 0;
     loop // == while true
@@ -14,7 +14,7 @@ fn loop_loop()
     }
 }
 
-fn loop_for()
+fn ex_or()
 {
     for i in 0..3 // 0 -> 2
     {
@@ -25,6 +25,19 @@ fn loop_for()
     {
         println!("for -> i:val = {}:{}", i, val);
     }
+}
+
+fn ex_match(country_code:u64)
+{
+    let country = match country_code {
+        44 => "UK",
+        49 => "Germany",
+        7 => "Russia",
+        55 => "Brazil",
+        1..=1000 => "Unknown",
+        _ => "Invalid"
+    };
+    println!("Country with code {} is {}", country_code, country);
 }
 
 fn main() {
@@ -88,6 +101,10 @@ fn main() {
     let day = if  temp > 20 {"sunny"} else {"cloudy"};
     println!("Today is {}", day);
 
-    loop_loop();
-    loop_for();
+    ex_loop();
+    ex_or();
+    ex_match(49);
+    ex_match(55);
+    ex_match(1000);
+    ex_match(11000);
 }

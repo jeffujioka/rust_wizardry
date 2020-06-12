@@ -7,6 +7,7 @@ mod into_string;
 mod lifetime;
 mod shape_traits;
 mod operator_overloading;
+mod reference_counter;
 mod vec_traits;
 
 use std::mem;
@@ -202,4 +203,5 @@ fn main() {
     print_person();
     operator_overloading::print_complex();
     lifetime::print_company_person();
+    reference_counter::print_rc_strong_count();
 }

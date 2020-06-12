@@ -78,16 +78,43 @@ impl<T: std::fmt::Display> Printable for Complex<T>
     }
 }
 
+impl Printable for i32
+{
+    fn format(&self) -> String
+    {
+        format!("i32: {}", *self)
+    }
+}
+
+fn print_printable_staticaly<T: Printable>(val: &T)
+{
+    print!("({})", val.format());
+}
+
+fn print_printable_dinamically(val: &dyn Printable)
+{
+    print!("({})", val.format());
+}
+
 pub fn print_complex()
 {
+    let i = 100;
+    println!("my i: {}", i.format());
+    print_printable_staticaly(&i);
+    println!("");
+    print_printable_dinamically(&i);
+    println!("");
+
     let a = Complex::new(2, 3);
     let b = Complex::new(3, 6);
-    println!("({}) + ({}) = ", a.format(), b.format());
-    println!("\t{:?}", a + b);
+    print_printable_staticaly(&a);
+    print!(" + ");
+    print_printable_dinamically(&a);
+    print!(" = {:?}\n", a + b);
     
     let mut c = Complex::new(2, 3);
     let d = Complex::new(3, 6);
-    println!("({}) += ({}) = ", c.format(), d.format());
+    print!("({}) += ({}) = ", c.format(), d.format());
     c += d;
     println!("\t{}", c.format());
     println!("\t{}", (-c).format());

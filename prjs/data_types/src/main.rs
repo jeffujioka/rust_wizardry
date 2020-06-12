@@ -3,11 +3,13 @@
 #![allow(unreachable_patterns)]
 
 mod animal_traits;
+mod vec_traits;
 
 use std::mem;
 use animal_traits::Animal;
 use animal_traits::Cat;
 use animal_traits::Human;
+use vec_traits::Summable;
 
 const MY_GLOBAL_CONST_VAR:u32 = 0xdeadbeef;
 static mut MY_GLOBAL_STATIC_VAR:u32 = MY_GLOBAL_CONST_VAR;
@@ -83,6 +85,13 @@ fn print_animal_traits()
     maria.speak();
     let tutu:Cat = Animal::create("Tutu");
     tutu.speak();
+}
+
+fn print_summable()
+{
+    let v = vec![0, 1, 2, 3, 4];
+    let sum = v.sum();
+    println!("The sum of {:?} is {}.", v, sum);
 }
 
 fn main() {
@@ -161,4 +170,5 @@ fn main() {
     enums(Color::CmyColor{cyan:1, magenta:1, yellow:15, black:2});
 
     print_animal_traits();
+    print_summable();
 }

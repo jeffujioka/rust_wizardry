@@ -3,6 +3,7 @@
 #![allow(unreachable_patterns)]
 
 mod animal_traits;
+mod into_string;
 mod shape_traits;
 mod vec_traits;
 
@@ -10,6 +11,7 @@ use std::mem;
 use animal_traits::Animal;
 use animal_traits::Cat;
 use animal_traits::Human;
+use into_string::Person;
 use shape_traits::Square;
 use shape_traits::Circle;
 use vec_traits::Summable;
@@ -102,6 +104,13 @@ fn print_shape_traits()
     shape_traits::print_shape_1(Square{side: 2.5}, Circle{radius: 2.5});
     shape_traits::print_shape_2(Square{side: 2.5}, Circle{radius: 2.5});
     shape_traits::print_shape_3(Square{side: 2.5}, Circle{radius: 2.5});
+}
+
+fn print_person()
+{
+    let jeff: String = "Jeff".to_string();
+    println!("Hello {}", Person::new("Jeff").name);
+    println!("Hello {}", Person::new(jeff).name);
 }
 
 fn main() {

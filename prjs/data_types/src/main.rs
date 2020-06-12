@@ -5,6 +5,7 @@
 mod animal_traits;
 mod into_string;
 mod shape_traits;
+mod operator_overloading;
 mod vec_traits;
 
 use std::mem;
@@ -207,4 +208,5 @@ fn main() {
     print_summable();
     print_shape_traits();
     print_person();
+    operator_overloading::print_complex();
 }

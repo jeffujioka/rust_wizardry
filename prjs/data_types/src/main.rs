@@ -2,7 +2,12 @@
 #![allow(unused_variables)]
 #![allow(unreachable_patterns)]
 
+mod animal_traits;
+
 use std::mem;
+use animal_traits::Animal;
+use animal_traits::Cat;
+use animal_traits::Human;
 
 const MY_GLOBAL_CONST_VAR:u32 = 0xdeadbeef;
 static mut MY_GLOBAL_STATIC_VAR:u32 = MY_GLOBAL_CONST_VAR;
@@ -60,10 +65,24 @@ fn enums(c:Color)
         Color::Green => println!("Green"),
         Color::Blue => println!("Blue"),
         Color::RgbColor(0, 0, 0) => println!("Black"),
-        Color::CmyColor{cyan:_,magenta:_,yellow:_,black:255} => println!("Black 2"),
+        // Color::CmyColor{cyan:_,magenta:_,yellow:_,black:255} => println!("Black 2"),
+        Color::CmyColor{black:255,..} => println!("Black 2"),
         Color::RgbColor(r, g, b) => println!("rgb({}, {}, {})", r, g, b),
         _ => println!("Not implemented!")
     }
+}
+
+fn print_animal_traits()
+{
+    let jeff = Human{name: "Jeff"};
+    jeff.speak();
+    let cat = Cat{name: "Mitch"};
+    cat.speak();
+
+    let maria:Human = Animal::create("Maria");
+    maria.speak();
+    let tutu:Cat = Animal::create("Tutu");
+    tutu.speak();
 }
 
 fn main() {
@@ -140,4 +159,6 @@ fn main() {
     enums(Color::RgbColor(0, 0, 255));
     enums(Color::CmyColor{cyan:0, magenta:0, yellow:0, black:255});
     enums(Color::CmyColor{cyan:1, magenta:1, yellow:15, black:2});
+
+    print_animal_traits();
 }

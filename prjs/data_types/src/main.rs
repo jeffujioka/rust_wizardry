@@ -3,6 +3,7 @@
 #![allow(unreachable_patterns)]
 
 mod animal_traits;
+mod atomic_rc;
 mod into_string;
 mod lifetime;
 mod shape_traits;
@@ -204,4 +205,5 @@ fn main() {
     operator_overloading::print_complex();
     lifetime::print_company_person();
     reference_counter::print_rc_strong_count();
+    atomic_rc::print_arc_strong_count();
 }

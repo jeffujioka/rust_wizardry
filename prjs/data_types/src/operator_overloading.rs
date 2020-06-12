@@ -65,23 +65,36 @@ impl<T: PartialEq> PartialEq for Complex<T>
     }
 }
 
+trait Printable
+{
+    fn format(&self) -> String;
+}
+
+impl<T: std::fmt::Display> Printable for Complex<T>
+{
+    fn format(&self) -> String
+    {
+        format!("{} + {}j", self.re, self.im)
+    }
+}
+
 pub fn print_complex()
 {
     let a = Complex::new(2, 3);
     let b = Complex::new(3, 6);
-    println!("{:?} + {:?} = ", a, b);
+    println!("({}) + ({}) = ", a.format(), b.format());
     println!("\t{:?}", a + b);
     
     let mut c = Complex::new(2, 3);
     let d = Complex::new(3, 6);
-    println!("{:?} += {:?} = ", c, d);
+    println!("({}) += ({}) = ", c.format(), d.format());
     c += d;
-    println!("\t{:?}", c);
-    println!("\t{:?}", -c);
+    println!("\t{}", c.format());
+    println!("\t{}", (-c).format());
     
     let e = Complex::new(2, 3);
     let f = Complex::new(3, 6);
-    println!("{:?} + {:?} = ", e, f);
+    println!("({}) + ({}) = ", e.format(), f.format());
     println!("\t{}", e == e);
     println!("\t{}", e == f);
     println!("\t{}", f == e);

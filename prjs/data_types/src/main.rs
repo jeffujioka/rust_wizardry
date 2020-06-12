@@ -4,6 +4,7 @@
 
 mod animal_traits;
 mod into_string;
+mod lifetime;
 mod shape_traits;
 mod operator_overloading;
 mod vec_traits;
@@ -13,8 +14,6 @@ use animal_traits::Animal;
 use animal_traits::Cat;
 use animal_traits::Human;
 use into_string::Person;
-use shape_traits::Square;
-use shape_traits::Circle;
 use vec_traits::Summable;
 
 const MY_GLOBAL_CONST_VAR:u32 = 0xdeadbeef;
@@ -98,13 +97,6 @@ fn print_summable()
     let v = vec![0, 1, 2, 3, 4];
     let sum = v.sum();
     println!("The sum of {:?} is {}.", v, sum);
-}
-
-fn print_shape_traits()
-{
-    shape_traits::print_shape_1(Square{side: 2.5}, Circle{radius: 2.5});
-    shape_traits::print_shape_2(Square{side: 2.5}, Circle{radius: 2.5});
-    shape_traits::print_shape_3(Square{side: 2.5}, Circle{radius: 2.5});
 }
 
 fn print_person()
@@ -206,7 +198,8 @@ fn main() {
 
     print_animal_traits();
     print_summable();
-    print_shape_traits();
+    shape_traits::print_shape_traits();
     print_person();
     operator_overloading::print_complex();
+    lifetime::print_company_person();
 }

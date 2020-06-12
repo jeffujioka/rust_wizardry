@@ -63,3 +63,22 @@ pub fn print_shape_3<T1, T2>(shape1: T1, shape2: T2)
     println!("3.1 -> the area of {:?} is {}", shape1, shape1.area());
     println!("3.2 -> the area of {:?} is {}", shape2, shape2.area());
 }
+
+pub fn print_shape_traits()
+{
+    print_shape_1(Square{side: 2.5}, Circle{radius: 2.5});
+    print_shape_2(Square{side: 2.5}, Circle{radius: 2.5});
+    print_shape_3(Square{side: 2.5}, Circle{radius: 2.5});
+
+    let shapes: [&dyn Shape; 4] = [
+        &Square{side: 2.5},
+        &Square{side: 2.5},
+        &Circle{radius: 2.5},
+        &Circle{radius: 2.5}
+    ];
+
+    for (i, shape) in shapes.iter().enumerate()
+    {
+        println!("Shape #{} has areaf {}", i, shape.area());
+    }
+}

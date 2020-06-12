@@ -14,6 +14,16 @@ impl Person
     pub fn new<S>(name: S) -> Person
         where S: Into<String>
     {
-        Person{name: name.into()}
+        let s = name.into();
+        println!("Creating new person: {:?}", s);
+        Person{name: s}
+    }
+}
+
+impl Drop for Person
+{
+    fn drop(&mut self)
+    {
+        println!("{} passed away.", self.name);
     }
 }

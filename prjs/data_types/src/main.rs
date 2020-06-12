@@ -111,6 +111,21 @@ fn print_person()
     let jeff: String = "Jeff".to_string();
     println!("Hello {}", Person::new("Jeff").name);
     println!("Hello {}", Person::new(jeff).name);
+    let keep_alive: Person;
+    {
+        let m = Person::new("Maria");
+        println!("Hey {}", m.name);
+        {
+            let l = Person::new("Lyoto");
+            println!("Hey {}", l.name);
+            drop(l);
+            println!("end scope 3!");
+        }
+        println!("end scope 2!");
+        keep_alive = m;
+    }
+    println!("{} is still alive.", keep_alive.name);
+    println!("end scope 1!");
 }
 
 fn main() {
@@ -191,4 +206,5 @@ fn main() {
     print_animal_traits();
     print_summable();
     print_shape_traits();
+    print_person();
 }

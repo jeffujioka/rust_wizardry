@@ -9,3 +9,4 @@ edition = "2018"
 [dependencies]
 # https://crates.io/crates/rand
 rand = "0.7.3"
+phrases = { path = "../greetings"}

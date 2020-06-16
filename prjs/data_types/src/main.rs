@@ -2,6 +2,8 @@
 #![allow(unused_variables)]
 #![allow(unreachable_patterns)]
 
+extern crate phrases;
+
 mod animal_traits;
 mod atomic_rc;
 mod into_string;
@@ -14,6 +16,8 @@ mod reference_counter;
 mod vec_traits;
 
 use std::mem;
+use phrases::greetings;
+
 use animal_traits::Animal;
 use animal_traits::Cat;
 use animal_traits::Human;
@@ -210,4 +214,11 @@ fn main() {
     atomic_rc::print_arc_strong_count();
     strings::print_strings();
     rand::print_rands();
+
+    println!("English:    {}", greetings::english::hello());
+    println!("English:    {}", greetings::english::goodbye());
+    println!("Portuguese: {}", greetings::portuguese::hello());
+    println!("Portuguese: {}", greetings::portuguese::goodbye());
+    println!("German:     {}", greetings::german::hello());
+    println!("German:     {}", greetings::german::goodbye());
 }

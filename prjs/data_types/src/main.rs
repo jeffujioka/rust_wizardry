@@ -9,6 +9,7 @@ mod lifetime;
 mod shape_traits;
 mod strings;
 mod operator_overloading;
+mod rand;
 mod reference_counter;
 mod vec_traits;
 
@@ -208,4 +209,5 @@ fn main() {
     reference_counter::print_rc_strong_count();
     atomic_rc::print_arc_strong_count();
     strings::print_strings();
+    rand::print_rands();
 }

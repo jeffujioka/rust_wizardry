@@ -7,6 +7,7 @@ mod atomic_rc;
 mod into_string;
 mod lifetime;
 mod shape_traits;
+mod strings;
 mod operator_overloading;
 mod reference_counter;
 mod vec_traits;
@@ -206,4 +207,5 @@ fn main() {
     lifetime::print_company_person();
     reference_counter::print_rc_strong_count();
     atomic_rc::print_arc_strong_count();
+    strings::print_strings();
 }

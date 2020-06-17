@@ -9,14 +9,14 @@ mod tests
     #[test]
     fn english_greeting_hello_correct()
     {
-        assert_eq!("Hello!", english::hello());
+        assert_eq!("Hello", english::hello());
     }
 
     #[test]
     #[should_panic]
     fn english_greeting_hello_incorrect()
     {
-        assert_eq!("Hi!", english::hello());
+        assert_eq!("Hi", english::hello());
     }
 
     #[test]
